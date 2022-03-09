@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import './Feed.css';
+import Post from './Post';
 import InputOption from './InputOption';
 import CreateIcon from "@material-ui/icons/Create";
 import ImageIcon from "@material-ui/icons/Image";
@@ -19,18 +20,25 @@ function Feed() {
                         <button type='submit'>Submit</button>
                     </form>
                 </div>
+                <div className='feed__inputOptions'>
+                    <InputOption Icon={ImageIcon} title="Photo" color="#70B5F9" />
+                    <InputOption Icon={SubscriptionsIcon} title="Video" color="#7FC15E" />
+                    <InputOption Icon={EventNoteIcon} title="Event" color="#E7A33E" />
+                    <InputOption
+                        Icon={CalendarViewDayIcon}
+                        title="Write article"
+                        color="#F5987E"
+                    />
+                </div>
             </div>
 
-            <div className='feed__inputOptions'>
-                <InputOption Icon={ImageIcon} title="Photo" color="#70B5F9" />
-                <InputOption Icon={SubscriptionsIcon} title="Video" color="#7FC15E" />
-                <InputOption Icon={EventNoteIcon} title="Event" color="#E7A33E" />
-                <InputOption
-                    Icon={CalendarViewDayIcon}
-                    title="Write article"
-                    color="#F5987E"
-                />
-            </div>
+
+
+            <Post
+                name="Your name"
+                description="Test"
+                message="Testy testi testing test"
+            />
 
         </div>
     )

@@ -2,31 +2,32 @@ import React from 'react';
 import './Sidebar.css';
 import { Avatar } from "@material-ui/core";
 
-const recentItem = (topic) => (
-  <div className="sidebar__recentItem">
-      <span className="sidebar__hash">#</span>
-      <p>{topic}</p>
-  </div>
-) 
+
 
 function Sidebar() {
+
+  const recentItem = (topic) => (
+    <div className="sidebar__recentItem">
+      <span className="sidebar__hash">#</span>
+      <p>{topic}</p>
+    </div>
+  )
+
   return (
     <div className='sidebar'>
-     
+
       <div className='sidebar__top'>
-            <img
-                src="/gmitlogo.jpg"
-                alt='gmit logo'
-            />
-        <div className="sidebar__avatar">
-          <Avatar />
-        </div>
+        <img
+          src="/gmitlogo.jpg"
+          alt='gmit logo'
+        />
+        <Avatar className="sidebar__avatar" />
         <h2>Your Name</h2>
         <h4>Example@Email.com</h4>
       </div>
 
       <div className='sidebar__stats'>
-        
+
         <div className="sidebar__stat">
           <p>Who viewed your profile</p>
           <p className="sidebar__statNumber">300</p>
@@ -39,9 +40,8 @@ function Sidebar() {
 
       </div>
 
-      <div className='sidebar_bottom'>
-      
-      <p>Recent</p>
+      <div className='sidebar__bottom'>
+        <p>Recent</p>
         {recentItem('Business')}
         {recentItem('Basketball')}
         {recentItem('Chess')}
