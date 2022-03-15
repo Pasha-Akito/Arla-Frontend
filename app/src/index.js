@@ -5,16 +5,18 @@ import App from './App';
 import store from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink
+} from '@apollo/client';
+import { Auth0Provider } from "@auth0/auth0-react";
 
-import { 
-  ApolloClient, 
-  InMemoryCache, 
-  ApolloProvider, 
-  createHttpLink } from '@apollo/client';
 
-  const httpLink = createHttpLink({
-    uri: 'http://localhost:4000'
-  });
+const httpLink = createHttpLink({
+  uri: 'http://localhost:4000'
+});
 
 const client = new ApolloClient({
   link: httpLink,
@@ -23,11 +25,18 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <ApolloProvider client={client}>
-        <App />
-      </ApolloProvider>
-    </Provider>
+    <Auth0Provider
+    domain='dev-z5v8jnvt.us.auth0.com'
+    clientId='xngUI2sEpiMj35U3hGO3LNb0K0lxhZeq'
+    redirectUri={window.location.origin}
+    audience='http://localhost:4000/'
+    >
+      <Provider store={store}>
+        <ApolloProvider client={client}>
+          <App />
+        </ApolloProvider>
+      </Provider>
+    </Auth0Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
