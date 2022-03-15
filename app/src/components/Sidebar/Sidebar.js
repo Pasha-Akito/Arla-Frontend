@@ -1,7 +1,7 @@
 import React from 'react';
 import './Sidebar.css';
 import { Avatar } from "@material-ui/core";
-
+import { useAuth0 } from '@auth0/auth0-react';
 
 
 function Sidebar() {
@@ -13,6 +13,8 @@ function Sidebar() {
     </div>
   )
 
+  const { user, isAuthenticated } = useAuth0();
+
   return (
     <div className='sidebar'>
 
@@ -21,9 +23,9 @@ function Sidebar() {
           src="/gmitlogo.jpg"
           alt='gmit logo'
         />
-        <Avatar className="sidebar__avatar" />
-        <h2>Your Name</h2>
-        <h4>Example@Email.com</h4>
+        {isAuthenticated ? <Avatar className="sidebar__avatar" src={user.picture} /> : <Avatar className="sidebar__avatar"/>}
+        {isAuthenticated ? <h2>{user.name}</h2> : <h2>Your Name</h2>}
+        {isAuthenticated ? <h4>{user.email}</h4> : <h4>Example@Email.com</h4>}
       </div>
 
       <div className='sidebar__stats'>
