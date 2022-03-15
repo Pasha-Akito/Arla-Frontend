@@ -6,10 +6,27 @@ import store from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 
+import { 
+  ApolloClient, 
+  InMemoryCache, 
+  ApolloProvider, 
+  createHttpLink } from '@apollo/client';
+
+  const httpLink = createHttpLink({
+    uri: 'http://localhost:4000'
+  });
+
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache()
+});
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

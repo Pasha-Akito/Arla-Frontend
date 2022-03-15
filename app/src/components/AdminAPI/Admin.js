@@ -3,18 +3,16 @@ import './Admin.css'
 import { useMutation, gql } from '@apollo/client';
 
 const CREATE_LINK_MUTATION = gql`
-    mutation UserMutation(
-        $name: String!
-        $image: String!
-        $email: String!
-    ) {
-        user(name: $name, image: $image, email: $email) {
-            uuid
-            name
-            image
-            email
-        }
+mutation CreateUsers($input: [UserCreateInput!]!) {
+  createUsers(input: $input) {
+    users {
+      uuid
+      email
+      name
+      image
     }
+  }
+}
 `;
 
 
@@ -29,9 +27,11 @@ function Admin() {
 
     const [admin] = useMutation(CREATE_LINK_MUTATION, {
         variables: {
-            name: formState.name,
-            image: formState.image,
-            email: formState.email
+            input: {
+                name: formState.name,
+                image: formState.image,
+                email: formState.email
+            }
         }
     });
 
