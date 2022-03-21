@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './Admin.css'
 import { useMutation, gql } from '@apollo/client';
 
-const CREATE_LINK_MUTATION = gql`
+const CREATE_USER_MUTATION = gql`
 mutation CreateUsers($input: [UserCreateInput!]!) {
   createUsers(input: $input) {
     users {
@@ -25,7 +25,7 @@ function Admin() {
         email: ''
     });
 
-    const [admin] = useMutation(CREATE_LINK_MUTATION, {
+    const [admin] = useMutation(CREATE_USER_MUTATION, {
         variables: {
             input: {
                 name: formState.name,

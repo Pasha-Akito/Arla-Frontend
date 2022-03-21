@@ -1,24 +1,23 @@
 import React from 'react';
 import './App.css';
+import { Routes, Route } from "react-router-dom";
+import Homepage from './pages/Homepage';
+import NoPage from './pages/NoPage';
+import InterestList from './components/Interest/InterestList';
 import Header from './components/Header/Header';
-import Sidebar from './components/Sidebar/Sidebar';
-import Feed from './components/Feed/Feed';
-import Widgets from './components/Widgets/Widgets';
-import Admin from './components/AdminAPI/Admin';
-import Login from './components/Login/Login';
+import Profile from './pages/Profile';
 
 function App() {
   return (
     <div>
-      <Login />
-      <div className="app">
-        <Admin />
-        <Header />
-        <div className='app__body'>
-          <Sidebar />
-          <Feed />
-          <Widgets />
-        </div>
+      <Header />
+      <div>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/list" element={<InterestList />} />
+        <Route path="/profile/" element={<Profile />} />
+        <Route path="/*" element={<NoPage />} />
+      </Routes>
       </div>
     </div>
   );
