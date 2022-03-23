@@ -1,5 +1,5 @@
 import React from 'react'
-import './Homepage.css';
+import './HomePage.css';
 import Sidebar from '../components/Sidebar/Sidebar';
 import Feed from '../components/Feed/Feed';
 import Widgets from '../components/Widgets/Widgets';

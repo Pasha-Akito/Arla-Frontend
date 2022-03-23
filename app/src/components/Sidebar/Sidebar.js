@@ -23,7 +23,7 @@ function Sidebar() {
           src="/gmitlogo.jpg"
           alt='gmit logo'
         />
-        {isAuthenticated ? <Avatar className="sidebar__avatar" src={user.picture} /> : <Avatar className="sidebar__avatar"/>}
+        {isAuthenticated ? <Avatar className="sidebar__avatar" src={user.picture} /> : <Avatar className="sidebar__avatar" />}
         {isAuthenticated ? <h2>{user.name}</h2> : <h2>Your Name</h2>}
         {isAuthenticated ? <h4>{user.email}</h4> : <h4>Example@Email.com</h4>}
       </div>

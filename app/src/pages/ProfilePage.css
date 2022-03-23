@@ -1,0 +1,19 @@
+.profile {
+    display: flex;
+    justify-content: space-around;
+    margin: 18px 0px;
+ }
+
+ .profile__avatar {
+    margin-bottom: 10px;
+ }
+
+ .profile__top {
+   display: flex;
+ }
+
+ .profile__top > .MuiAvatar-root {
+    width: 160px;
+    height: 160px;
+    border: 80px;
+  }
