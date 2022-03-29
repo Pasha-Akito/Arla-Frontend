@@ -12,112 +12,109 @@ function ProfilePage() {
   const { user, isAuthenticated } = useAuth0()
 
   return (
+    <section style={{
+      position: 'relative',
+      paddingTop: '64px',
+      paddingBottom: '64px'
+    }}>
+      <Container sx={{
+        width: '100%',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        padding: '15px'
+      }} >
+        <CssBaseline />
 
-    <Grid container sx={{
-      maxWidth: '1200px',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      display: 'block'
-    }} >
-      <CssBaseline />
+        <Card sx={{ marginTop: '60px', position: 'relative' }}>
 
-      <Card sx={{
-        marginTop: '120px'
-      }}>
+          <div style={{ paddingRight: '24px', paddingLeft: '24px' }}>
 
-        <div style={{
-          paddingRight: '24px',
-          paddingLeft: '24px'
-        }}>
+            <Grid container sx={{ justifyContent: 'center' }}>
 
-          <Grid item
-            sx={{
-              justifyContent: 'center',
-            }}>
+              <Grid item lg={3} sx={{ order: '2' }}>
+                <div className="profile__top">
+                  <Avatar src={user.picture} />
+                </div>
+              </Grid>
 
-            <Grid item
-              lg={10}
-            >
-              <div className="profile__top">
-                <Avatar
-                  src={user.picture}
-                />
-              </div>
-            </Grid>
+              <Grid item
+                lg={4}
+                sx={{ textAlign: 'right', alignSelf: 'center', order: '3' }}>
 
-            <Grid item
-              xs={12}
-            >
+                <div style={{ padding: '12px' }}>
 
-              <div>
-                <div>
-                  <Button
-                  >
+                  <Button sx={{ marginRight: '24px' }} variant="contained">
                     Connect
                   </Button>
-                  <Button
-                  >
+
+                  <Button sx={{ float: 'right' }} variant="contained">
                     Message
                   </Button>
                 </div>
-              </div>
-              <div>
-                <div>
-                  <div>
-                    <span >22</span>
-                    <span >Friends</span>
+              </Grid>
+
+              <Grid item lg={4} sx={{ order: '1', alignSelf: 'center' }}>
+
+                <div style={{ padding: '16px', display: 'flex', justifyContent: 'center' }}>
+
+                  <div style={{ textAlign: 'center', marginRight: '16px', padding: '14px' }}>
+                    <span style={{ fontSize: '18px', fontWeight: 'bold', display: 'block' }}>22</span>
+                    <span style={{ fontSize: '14px', }}>Friends</span>
                   </div>
-                  <div>
-                    <span >10</span>
-                    <span >Photos</span>
+                  <div style={{ textAlign: 'center', marginRight: '16px', padding: '14px' }}>
+                    <span style={{ fontSize: '18px', fontWeight: 'bold', display: 'block' }}>10</span>
+                    <span style={{ fontSize: '14px', }}>Photos</span>
                   </div>
-                  <div>
-                    <span >89</span>
-                    <span >Comments</span>
+                  <div style={{ textAlign: 'center', marginRight: '16px', padding: '14px' }}>
+                    <span style={{ fontSize: '18px', fontWeight: 'bold', display: 'block' }}>89</span>
+                    <span style={{ fontSize: '14px', }}>Comments</span>
                   </div>
                 </div>
-              </div>
+              </Grid>
+
             </Grid>
-          </Grid>
-          <div>
-            <h3>
-              Jessica Jones{" "}
-              <span>, 27</span>
-            </h3>
-            <div>
-              <i />
-              Bucharest, Romania
-            </div>
-            <div>
-              <i />
-              Solution Manager - Creative Tim Officer
-            </div>
-            <div>
-              <i />
-              University of Computer Science
-            </div>
-          </div>
-          <div >
-            <div>
+            <div style={{ textAlign: 'center', marginTop: '48px' }}>
+              <h3>
+                Pasha Antonov
+              </h3>
+              <div style={{ fontSize: '16px' }}>
+                <i style={{ marginRight: '8px' }} />
+                Ireland
+              </div>
               <div>
-                <p>
-                  An artist of considerable range, Ryan — the name taken
-                  by Melbourne-raised, Brooklyn-based Nick Murphy —
-                  writes, performs and records all of his own music,
-                  giving it a warm, intimate feel with a solid groove
-                  structure. An artist of considerable range.
-                </p>
-                <h4>Show More</h4>
+                <i />
+                Graduated Course
+              </div>
+              <div>
+                <i />
+                Interests?
               </div>
             </div>
+            <div style={{ marginTop: '48px', paddingTop: '48px', borderTop: 'true', textAlign: 'center' }}>
+              <Grid container sx={{
+                justifyContent: 'center'
+              }}>
+                <Grid item lg={9}>
+                  <div style={{ paddingBottom: '48px' }}>
+                    <p>
+                      Fourth year student doing his final year project
+                      using react for the front end
+                      graphql to querry, apolloserver as the provider
+                      and neo4j as the database housing everything                      Fourth year student doing his final year project
+                      using react for the front end
+                      graphql to querry, apolloserver as the provider
+                      and neo4j as the database housing everything
+                    </p>
+                  </div>
+                </Grid>
+              </Grid>
+            </div>
           </div>
-        </div>
+        </Card>
 
-      </Card>
-
-    </Grid>
+      </Container>
+    </section >
   )
-
 }
 
 export default ProfilePage
