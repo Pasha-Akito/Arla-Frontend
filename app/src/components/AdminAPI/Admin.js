@@ -16,7 +16,6 @@ mutation CreateUsers($input: [UserCreateInput!]!) {
 `;
 
 
-
 function Admin() {
 
     const [formState, setFormState] = useState({

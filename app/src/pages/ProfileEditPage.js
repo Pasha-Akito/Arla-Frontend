@@ -8,17 +8,18 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import CountrySelector from '../components/ListSelectors/CountrySelector';
+import YearSelector from '../components/ListSelectors/YearSelector';
+import CourseSelector from '../components/ListSelectors/CourseSelector';
+import InterestSelector from '../components/ListSelectors/InterestSelector';
 
 export default function ProfileEditPage() {
-  
 
   return (
-
-      <Container component="main" maxWidth="xs">
+      <Container  maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
@@ -29,62 +30,60 @@ export default function ProfileEditPage() {
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
+            <AccountCircleIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            Your Profile Details
           </Typography>
-          <Box component="form" noValidate  sx={{ mt: 3 }}>
+          <Box component="form" noValidate sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                />
-              </Grid>
+
               <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
+                  id="fullName"
+                  label="Full Name"
+                  name="fullName"
+                  autoComplete="name"
                 />
               </Grid>
+
               <Grid item xs={12}>
                 <TextField
+                  rows={4}
+                  multiline
                   required
                   fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
+                  id="bio"
+                  label="Write a bit about yourself..."
                 />
               </Grid>
+
+              <Grid item xs={12}>
+                <CountrySelector />
+              </Grid>
+
+              <Grid item xs={12} sm={8}>
+                <CourseSelector />
+              </Grid>
+              <Grid item xs={12} sm={4}>
+                <YearSelector />
+              </Grid>
+
+              <Grid item xs={12}>
+                <InterestSelector />
+              </Grid>
+
             </Grid>
+
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Edit Profile Details
             </Button>
 
           </Box>

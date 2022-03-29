@@ -4,7 +4,7 @@ import Sidebar from '../components/Sidebar/Sidebar';
 import Feed from '../components/Feed/Feed';
 import Widgets from '../components/Widgets/Widgets';
 import Admin from '../components/AdminAPI/Admin';
-import InterestList from '../components/Interest/InterestList';
+import InterestList from '../components/ListSelectors/Interest/InterestList';
 
 function Homepage() {
     return (
