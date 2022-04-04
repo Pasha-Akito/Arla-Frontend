@@ -3,7 +3,7 @@ import './App.css';
 import { Routes, Route } from "react-router-dom";
 import HomePage from './pages/HomePage';
 import NoPage from './pages/NoPage';
-import InterestList from './components/ListSelectors/Interest/InterestList';
+import InterestsPage from './pages/InterestsPage';
 import Header from './components/Header/Header';
 import Profile from './pages/ProfilePage';
 import LandingPage from './pages/LandingPage';
@@ -16,13 +16,12 @@ function App() {
 
   return (
     <div>
-      {isAuthenticated ? <Header /> : <h4></h4>}
-      <div>
+      <div className='app'>
         <Routes>
           {isAuthenticated ?
             <Route path="/" element={<HomePage />} />
             : <Route path="/" element={<LandingPage />} />}
-          <Route path="/list" element={<InterestList />} />
+          <Route path="/interest" element={<InterestsPage />} />
           <Route path="/profile/edit" element={<ProfileEditPage />} />
           <Route path="/profile/" element={<Profile />} />
           <Route path="/*" element={<NoPage />} />

@@ -36,7 +36,7 @@ function Header() {
         <Link to='/profile'>
           <HeaderOption Icon={AccountBoxIcon} title="Profile" />
         </Link>
-        <Link to='/list'>
+        <Link to='/interest'>
           <HeaderOption Icon={TimelineIcon} title="DisplayInterestsList" />
         </Link>
         <HeaderOption Icon={ChatIcon} title="Messaging" />
