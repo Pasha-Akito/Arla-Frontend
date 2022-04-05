@@ -8,7 +8,7 @@ const InterestCard = ({ interest }) => {
 
     return (
 
-        <CardContainer to={`/interest/${name}`}>
+        <CardContainer to={`/interest/${id}`}>
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', height: '100%' }}>
 
                 <div style={{ height: '220', position: 'relative' }}>

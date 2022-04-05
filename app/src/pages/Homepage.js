@@ -4,7 +4,7 @@ import Sidebar from '../components/Sidebar/Sidebar';
 import Feed from '../components/Feed/Feed';
 import Widgets from '../components/Widgets/Widgets';
 import Admin from '../components/AdminAPI/Admin';
-import Layout from '../components/Layout';
+import Layout from '../containers/Layout';
 
 function Homepage() {
   return (

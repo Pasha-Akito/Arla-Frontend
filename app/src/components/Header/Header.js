@@ -19,10 +19,6 @@ function Header() {
   return (
     <div className="header">
       <div className='header__left'>
-        <img
-          src="/arlaarla.png"
-          alt='arla logo'
-        />
         <div className='header__search'>
           <SearchIcon />
           <input type="text" placeholder='Search' />
@@ -33,7 +29,7 @@ function Header() {
         <Link to='/'>
           <HeaderOption Icon={HomeIcon} title="Home" />
         </Link>
-        <Link to='/profile'>
+        <Link to='/profile/:profileId'>
           <HeaderOption Icon={AccountBoxIcon} title="Profile" />
         </Link>
         <Link to='/interest'>

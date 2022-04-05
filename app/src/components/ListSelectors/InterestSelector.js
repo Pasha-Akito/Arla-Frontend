@@ -2,7 +2,7 @@ import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import { MenuItem } from '@mui/material';
 import { useQuery, gql } from '@apollo/client';
-import QueryResult from '../QueryResult';
+import QueryResult from '../../containers/QueryResult'
 
 const COURSE_QUERY = gql`
 query Interests {

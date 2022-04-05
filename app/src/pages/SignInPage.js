@@ -8,11 +8,39 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { useAuth0 } from '@auth0/auth0-react'
+import { useMutation, gql, useQuery } from '@apollo/client';
 
 
-export default function LandingPage() {
+const CREATE_USER_MUTATION = gql`
+mutation CreateUsersWithProfile($input: [UserCreateInput!]!) {
+  createUsers(input: $input) {
+    users {
+      tokenId
+      email
+      profile {
+        name
+      }
+    }
+  }
+}
+`;
 
-    const { loginWithRedirect } = useAuth0()
+export default function SignInPage() {
+
+    const { loginWithRedirect, user } = useAuth0();
+
+    // const [makeUserAndProfile] = useMutation(CREATE_USER_MUTATION, {
+    //     variables: {
+    //         input: {
+    //             tokenId: user.sub,
+    //             email: user.email,
+    //             profile: {
+    //                 name: user.name
+    //             }
+    //         }
+    //     }
+    // });
+
 
     return (
         <Grid container sx={{
@@ -56,12 +84,12 @@ export default function LandingPage() {
                     <Typography component="h1" variant="h5">
                         Welcome To ArlaArla
                     </Typography>
-
                     <Button
                         variant="contained"
                         sx={{ mt: 1, mb: 2 }}
-                        onClick={() => loginWithRedirect()}
-                    >
+                        onClick={() => {
+                            loginWithRedirect();
+                        }}>
                         Sign In Using Google
                     </Button>
                 </Box>

@@ -1,8 +1,8 @@
 import React from 'react'
 import { useQuery, gql } from '@apollo/client';
 import InterestCard from '../containers/InterestCard';
-import Layout from '../components/Layout';
-import QueryResult from '../components/QueryResult';
+import Layout from '../containers/Layout';
+import QueryResult from '../containers/QueryResult'
 
 const INTERESTS_QUERY = gql`
 query Interests {
@@ -13,7 +13,6 @@ query Interests {
   }
 }
 `;
-
 
 const InterestsPage = () => {
     const { loading, error, data } = useQuery(INTERESTS_QUERY);
