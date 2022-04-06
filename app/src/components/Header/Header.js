@@ -29,7 +29,7 @@ function Header() {
         <Link to='/'>
           <HeaderOption Icon={HomeIcon} title="Home" />
         </Link>
-        <Link to='/profile/:profileId'>
+        <Link to='/profile/my'>
           <HeaderOption Icon={AccountBoxIcon} title="Profile" />
         </Link>
         <Link to='/interest'>

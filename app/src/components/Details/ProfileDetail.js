@@ -6,20 +6,16 @@ import Card from '@mui/material/Card';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Avatar from '@mui/material/Avatar';
-import Layout from '../../containers/Layout';
 
 
-
-
-const ProfilePage = ({ profile }) => {
+const ProfileDetail = ({ profile }) => {
   const { name, bio, image, id, country } = profile;
 
   return (
-    <Layout>
       <section style={{
         position: 'relative',
-        paddingTop: '64px',
-        paddingBottom: '64px'
+        paddingTop: '32px',
+        paddingBottom: '32px'
       }}>
         <Container sx={{
           width: '100%',
@@ -33,7 +29,7 @@ const ProfilePage = ({ profile }) => {
 
             <div style={{ paddingRight: '24px', paddingLeft: '24px' }}>
 
-              <Grid container sx={{ justifyContent: 'center' }}>
+              <Grid container sx={{ justifyContent: 'center', paddingTop: '24px'}}>
 
                 <Grid item lg={3} sx={{ order: '2' }}>
                   <div className="profile__top">
@@ -112,8 +108,7 @@ const ProfilePage = ({ profile }) => {
 
         </Container>
       </section >
-    </Layout>
   )
 }
 
-export default ProfilePage
+export default ProfileDetail

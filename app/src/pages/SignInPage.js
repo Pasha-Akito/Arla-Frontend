@@ -9,7 +9,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { useAuth0 } from '@auth0/auth0-react'
 import { useMutation, gql, useQuery } from '@apollo/client';
-
+import { useNavigate } from 'react-router-dom';
 
 const CREATE_USER_MUTATION = gql`
 mutation CreateUsersWithProfile($input: [UserCreateInput!]!) {

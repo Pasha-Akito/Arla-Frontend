@@ -12,6 +12,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { Auth0Provider, useAuth0 } from "@auth0/auth0-react";
 import { BrowserRouter } from 'react-router-dom';
+import SignInPage from './pages/SignInPage';
 
 const AppWithApollo = () => {
 
@@ -48,7 +49,7 @@ const AppWithApollo = () => {
 
   return (
     <ApolloProvider client={client}>
-      <App />
+      {!isAuthenticated ? <SignInPage /> : <App />}
     </ApolloProvider>
   );
 }
@@ -61,6 +62,7 @@ ReactDOM.render(
         clientId='xngUI2sEpiMj35U3hGO3LNb0K0lxhZeq'
         redirectUri={window.location.origin}
         audience='http://localhost:4000/'
+        useRefreshTokens
       >
         <AppWithApollo />
       </Auth0Provider>
