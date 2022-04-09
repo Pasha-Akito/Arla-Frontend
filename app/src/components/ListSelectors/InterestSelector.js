@@ -13,16 +13,16 @@ query Interests {
 }
 `;
 
-function InterestSelector() {
-
+const InterestSelector = props => {
 
     const { loading, error, data } = useQuery(COURSE_QUERY);
-
     const [interest, setInterest] = React.useState('');
 
     const handleChange = (event) => {
         setInterest(event.target.value);
     };
+
+    React.useEffect(() => props.onChange(interest), [interest]);
 
     return (
         <QueryResult error={error} loading={loading} data={data}>
@@ -37,7 +37,7 @@ function InterestSelector() {
                 label="Interests and Hobbies"
             >
                 {data?.interests?.map((interest) => (
-                    <MenuItem key={interest.id} value={interest.id}>
+                    <MenuItem key={interest.id} value={interest.name}>
                         {interest.name}
                     </MenuItem>
                 ))}

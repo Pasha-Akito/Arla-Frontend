@@ -4,18 +4,24 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 
-function YearSelector() {
-    const [value, setValue] = React.useState(new Date());
+const YearSelector = props => {
+    const [date, setDate] = React.useState(new Date());
+
+    const handleChange = (date) => {
+        setDate(date)
+    }
+
+    React.useEffect(() => props.onChange(date.getFullYear()), [date]);
 
     return (
         <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DatePicker
                 views={['year']}
                 label="Year Graduated"
-                value={value}
-                onChange={(newValue) => {
-                    setValue(newValue);
-                }}
+                value={date}
+                minDate={new Date('1970-01-01')}
+                maxDate={new Date()}
+                onChange={handleChange}
                 renderInput={(params) => <TextField 
                     id="year"
                     name="year"

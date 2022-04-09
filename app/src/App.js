@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import { Routes, Route, Navigate } from "react-router-dom";
 import HomePage from './pages/HomePage';
@@ -6,13 +6,14 @@ import InterestsListPage from './pages/InterestsListPage';
 import InterestPage from './pages/InterestPage';
 import ProfilePage from './pages/ProfilePage';
 import { useAuth0 } from '@auth0/auth0-react';
-import ProfileEditPage from './pages/ProfileEditPage';
+import ProfileEditPage from './pages/ProfileRegisterPage';
 import ProfileMyPage from './pages/ProfileMyPage';
-import QueryResult from './containers/QueryResult';
 import { useQuery, gql } from '@apollo/client';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Box from '@material-ui/core/Box';
 
-const GET_COUNT_FROM_TOKENID = gql`
-query Query($tokenId: String!) {
+export const GET_COUNT_FROM_TOKENID = gql`
+query UserCount($tokenId: String!) {
   userCount(tokenId: $tokenId)
 }
 `;
@@ -22,10 +23,14 @@ const App = () => {
   const { user } = useAuth0();
 
   const { data, loading, error } = useQuery(GET_COUNT_FROM_TOKENID, {
-    variables: {tokenId: user.sub}
+    variables: { tokenId: user.sub },
+    fetchPolicy: "network-only"
   });
 
-  if (loading) return <text>Loading...</text>;
+  if (loading) return <Box sx={{ display: 'center' }}>
+    <CircularProgress />
+  </Box>;
+
   if (error) return (
     <text>Error! ${error.message}</text>
   );

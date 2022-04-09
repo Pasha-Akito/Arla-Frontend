@@ -73,13 +73,13 @@ const ProfileDetail = ({ profile }) => {
                 </Grid>
 
               </Grid>
-              <div style={{ textAlign: 'center', marginTop: '48px' }}>
+              <div style={{ textAlign: 'left', marginTop: '24px' }}>
                 <h3>
                   {name || 'name'}
                 </h3>
                 <div style={{ fontSize: '16px' }}>
-                  <i style={{ marginRight: '8px' }} />
-                  {country || 'country'}
+                  <i />
+                  Living in {country || 'country'}
                 </div>
                 <div>
                   <i />
@@ -90,7 +90,7 @@ const ProfileDetail = ({ profile }) => {
                   Interests?
                 </div>
               </div>
-              <div style={{ marginTop: '48px', paddingTop: '48px', borderTop: 'true', textAlign: 'center' }}>
+              <div style={{ marginTop: '18px', paddingTop: '18px', borderTop: 'true', textAlign: 'left' }}>
                 <Grid container sx={{
                   justifyContent: 'center'
                 }}>

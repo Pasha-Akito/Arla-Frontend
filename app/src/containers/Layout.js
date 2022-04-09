@@ -19,7 +19,7 @@ const Layout = ({ fullWidth, children, grid }) => {
   /** Layout styled components */
   const PageContainer = styled.div((props) => ({
     display: 'flex',
-    backgroundColor: '#2d79a5',
+    backgroundColor: 'lightblue',
     justifyContent: props.grid ? 'center' : 'top',
     flexDirection: props.grid ? 'row' : 'column',
     flexWrap: 'wrap',

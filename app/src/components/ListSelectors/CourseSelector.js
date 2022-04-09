@@ -13,7 +13,7 @@ query Courses {
 }
 `;
 
-function CourseSelector() {
+const CourseSelector = props => {
 
 
     const { loading, error, data } = useQuery(COURSE_QUERY);
@@ -23,6 +23,8 @@ function CourseSelector() {
     const handleChange = (event) => {
         setCourse(event.target.value);
     };
+
+    React.useEffect(() => props.onChange(course), [course]);
 
     return (
         <QueryResult error={error} loading={loading} data={data}>
@@ -37,7 +39,7 @@ function CourseSelector() {
                 label="Graduated Course"
             >
                 {data?.courses?.map((course) => (
-                    <MenuItem key={course.id} value={course.id}>
+                    <MenuItem key={course.id} value={course.name}>
                         {course.name}
                     </MenuItem>
                 ))}
