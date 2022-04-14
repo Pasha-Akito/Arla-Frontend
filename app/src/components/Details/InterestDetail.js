@@ -1,19 +1,57 @@
 import React from 'react'
 import styled from '@emotion/styled';
 import { widths } from '../../styles';
+import ConnectInterestButton from '../RelationshipButtons/ConnectInterestButton';
+import DisconnectInterestButton from '../RelationshipButtons/DisconnectInterestButton';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useQuery, gql } from '@apollo/client';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Box from '@material-ui/core/Box';
+
+export const USER_INTEREST_COUNT = gql`
+query UserInterestCount($tokenId: String!, $name: String!) {
+  userInterestCount(tokenId: $tokenId, name: $name)
+}
+`;
 
 const InterestDetail = ({ interest }) => {
-    const { name, bio, id } = interest;
+
+    const { user } = useAuth0();
+
+    const { data, loading, error } = useQuery(USER_INTEREST_COUNT, {
+        variables: { 
+            tokenId: user.sub,
+            name: interest.name
+        },
+        fetchPolicy: "network-only"
+    });
+
+    if (loading) return <Box sx={{ display: 'center' }}>
+        <CircularProgress />
+    </Box>;
+
+    if (error) return (
+        <text>Error! ${error.message}</text>
+    );
+
 
     return (
         <ContentSection>
             <img style={{ objectFit: 'cover', maxHeight: '400px', borderRadius: '4px', marginBottom: '30px' }} src="/gmitlogo.jpg" />
             <InterestDetails>
                 <DetailRow>
-                    <h1>{name || 'name'}</h1>
+                    <h1>{interest.name || 'name'}</h1>
+
+                {data.userInterestCount > 0 
+                ? 
+                <DisconnectInterestButton interestButton={interest.name} />
+                :
+                <ConnectInterestButton interestButton={interest.name} />
+                }
+
                 </DetailRow>
                 <DetailRow>
-                    <h4>{bio || 'bio'}</h4>
+                    <h4>{interest.bio || 'bio'}</h4>
                 </DetailRow>
             </InterestDetails>
         </ContentSection>

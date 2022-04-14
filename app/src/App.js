@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './App.css';
 import { Routes, Route, Navigate } from "react-router-dom";
 import HomePage from './pages/HomePage';
@@ -41,10 +41,15 @@ const App = () => {
         <Routes>
           <Route
             path="/"
-            element={data.userCount > 0 ? <HomePage /> : <Navigate to='/profile/my/register' />}
+            element=
+            {data.userCount > 0 
+              ? 
+              <HomePage /> 
+              : 
+              <Navigate to='/profile/my/register' />}
           />
           <Route path="/interest" element={<InterestsListPage />} />
-          <Route path='/interest/:interestId' element={<InterestPage />} />
+          <Route path='/interest/:interestName' element={<InterestPage />} />
           <Route path="/profile/my/register" element={<ProfileEditPage />} />
           <Route path="/profile/my" element={<ProfileMyPage />} />
           <Route path="/profile/:profileId" element={<ProfilePage />} />

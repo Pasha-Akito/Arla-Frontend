@@ -62,7 +62,8 @@ ReactDOM.render(
         clientId='xngUI2sEpiMj35U3hGO3LNb0K0lxhZeq'
         redirectUri={window.location.origin}
         audience='http://localhost:4000/'
-        useRefreshTokens
+        useRefreshTokens='true'
+        cacheLocation="localstorage"
       >
         <AppWithApollo />
       </Auth0Provider>

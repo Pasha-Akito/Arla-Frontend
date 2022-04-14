@@ -5,12 +5,15 @@ import QueryResult from '../containers/QueryResult';
 import InterestDetail from '../components/Details/InterestDetail';
 import { useParams } from "react-router-dom";
 
-const INTEREST_QUERY = gql`
-query GetInterestById($where: InterestWhere) {
+export const INTEREST_QUERY = gql`
+query GetInterestByName($where: InterestWhere) {
   interests(where: $where) {
     name
     bio
     id
+    peopleInterested {
+      name
+    }
   }
 }
 `;
@@ -20,17 +23,17 @@ const InterestPage = () => {
     const { loading, error, data } = useQuery(INTEREST_QUERY, {
         variables: {
             where: {
-                id: params.interestId
+                name: params.interestName
             }
         },
-
+        fetchPolicy: "network-only"
     });
 
     return (
         <Layout>
             <QueryResult error={error} loading={loading} data={data}>
-            {data?.interests?.map((interest) => (
-                    <InterestDetail key={interest.id} interest={interest} />
+                {data?.interests?.map((interest) => (
+                    <InterestDetail key={interest.name} interest={interest} />
                 ))}
             </QueryResult>
         </Layout>
