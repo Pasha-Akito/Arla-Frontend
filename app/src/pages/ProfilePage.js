@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import Layout from '../containers/Layout';
 import QueryResult from '../containers/QueryResult';
-import ProfileDetail from '../components/Details/ProfileMyDetail';
+import ProfileDetail from '../components/Details/ProfileDetail';
 import { useParams } from "react-router-dom";
 
 const GET_PROFILE_FROM_ID = gql`

@@ -9,7 +9,7 @@ import Avatar from '@mui/material/Avatar';
 import { Link } from 'react-router-dom';
 
 
-const ProfileMyDetail = ({ profile }) => {
+const ProfileDetail = ({ profile }) => {
 
   return (
     <section style={{
@@ -43,12 +43,13 @@ const ProfileMyDetail = ({ profile }) => {
 
                 <div style={{ padding: '12px' }}>
 
-                  <Link to='/profile/my/edit' state={profile} style={{ textDecoration: 'none' }}>
-                    <Button sx={{ marginRight: '24px' }} variant="contained">
-                      Edit Profile
-                    </Button>
-                  </Link>
+                  <Button sx={{ marginRight: '24px' }} variant="contained">
+                    Connect
+                  </Button>
 
+                  <Button sx={{ float: 'right' }} variant="contained">
+                    Message
+                  </Button>
                 </div>
               </Grid>
 
@@ -83,11 +84,11 @@ const ProfileMyDetail = ({ profile }) => {
               <div>
                 <i />
                 {profile.graduatedCoursesConnection.edges.map((course) => (
-                  <div>
-                    <i />
-                    Graduated {course.node.name || 'Course?'} in {course.year}
-                  </div>
-                ))}
+                <div>
+                  <i />
+                   Graduated {course.node.name || 'Course?'} in {course.year}
+                </div>
+              ))}
               </div>
               <div style={{ marginTop: '12px' }}>
                 <h4> Interests in: </h4>
@@ -124,4 +125,4 @@ const ProfileMyDetail = ({ profile }) => {
   )
 }
 
-export default ProfileMyDetail
+export default ProfileDetail

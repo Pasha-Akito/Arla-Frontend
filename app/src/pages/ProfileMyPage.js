@@ -5,7 +5,7 @@ import QueryResult from '../containers/QueryResult';
 import ProfileMyDetail from '../components/Details/ProfileMyDetail';
 import { useAuth0 } from '@auth0/auth0-react'
 
-const GET_PROFILE_FROM_TOKENID = gql`
+export const GET_PROFILE_FROM_TOKENID = gql`
 query GetProfileFromUserId($where: PersonWhere) {
   people(where: $where) {
     name

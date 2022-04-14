@@ -5,8 +5,9 @@ import HomePage from './pages/HomePage';
 import InterestsListPage from './pages/InterestsListPage';
 import InterestPage from './pages/InterestPage';
 import ProfilePage from './pages/ProfilePage';
+import ProfileEditPage from './pages/ProfileEditPage';
 import { useAuth0 } from '@auth0/auth0-react';
-import ProfileEditPage from './pages/ProfileRegisterPage';
+import ProfileRegisterPage from './pages/ProfileRegisterPage';
 import ProfileMyPage from './pages/ProfileMyPage';
 import { useQuery, gql } from '@apollo/client';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -50,8 +51,9 @@ const App = () => {
           />
           <Route path="/interest" element={<InterestsListPage />} />
           <Route path='/interest/:interestName' element={<InterestPage />} />
-          <Route path="/profile/my/register" element={<ProfileEditPage />} />
           <Route path="/profile/my" element={<ProfileMyPage />} />
+          <Route path="/profile/my/register" element={<ProfileRegisterPage />} />
+          <Route path="/profile/my/edit" element={<ProfileEditPage />} />
           <Route path="/profile/:profileId" element={<ProfilePage />} />
           <Route path="/*" element={<Navigate to='/' replace />} />
         </Routes>

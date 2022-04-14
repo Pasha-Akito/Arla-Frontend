@@ -5,6 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Typography from '@mui/material/Typography';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CountrySelector from '../components/ListSelectors/CountrySelector';
@@ -55,7 +56,7 @@ export default function ProfileRegisterPage() {
     interest: ''
   });
 
-  const [registerUser] = useMutation(CREATE_USER_MUTATION, {
+  const [registerUser, {loading, error}] = useMutation(CREATE_USER_MUTATION, {
     variables: {
       input: {
         tokenId: user.sub,
@@ -93,7 +94,7 @@ export default function ProfileRegisterPage() {
         }
       }
     },
-    refetchQueries: [ GET_COUNT_FROM_TOKENID, 'UserCount' ],
+    refetchQueries: [GET_COUNT_FROM_TOKENID, 'UserCount'],
     onCompleted: () => navigate("/profile/my"),
   });
 
@@ -116,6 +117,14 @@ export default function ProfileRegisterPage() {
     ...formState,
     year: value
   });
+
+  if (loading) return <Box sx={{ display: 'center' }}>
+    <CircularProgress />
+  </Box>;
+
+  if (error) return (
+    <text>Error! ${error.message}</text>
+  );
 
   return (
     <PageContainer>

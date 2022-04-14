@@ -26,13 +26,13 @@ function Header() {
       </div>
 
       <div className='header__right'>
-        <Link to='/'>
+        <Link to='/' style={{ textDecoration: 'none' }}>
           <HeaderOption Icon={HomeIcon} title="Home" />
         </Link>
-        <Link to='/profile/my'>
+        <Link to='/profile/my' style={{ textDecoration: 'none' }}>
           <HeaderOption Icon={AccountBoxIcon} title="Profile" />
         </Link>
-        <Link to='/interest'>
+        <Link to='/interest' style={{ textDecoration: 'none' }}>
           <HeaderOption Icon={TimelineIcon} title="DisplayInterestsList" />
         </Link>
         <HeaderOption Icon={ChatIcon} title="Messaging" />
