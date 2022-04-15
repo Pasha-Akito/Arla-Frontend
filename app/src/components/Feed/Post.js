@@ -1,24 +1,21 @@
 import { Avatar } from '@material-ui/core';
 import React from 'react';
 import './Post.css';
-import ThumbUpIcon from "@material-ui/icons/ThumbUp";
-import ChatOutlinedIcon from "@material-ui/icons/ChatOutlined";
-import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
-import SendOutlinedIcon from "@material-ui/icons/SendOutlined";
 
-function Post({ name, description, message, photoUrl }) {
+const Post = ({ post }) => {
+
     return (
         <div className='post'>
             <div className='post__header'>
                 <Avatar />
                 <div className='post__info'>
-                    <h2>{name}</h2>
-                    <p>{description}</p>
+                    <h2>{post.node.creator.name}</h2>
+                    <p>{post.date}</p>
                 </div>
             </div>
 
             <div className='post__body'>
-                <p>{message}</p>
+                <p>{post.node.content}</p>
             </div>
 
             <div className='post__buttons'>

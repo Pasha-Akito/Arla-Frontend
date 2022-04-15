@@ -14,13 +14,24 @@ query GetProfileFromUserId($where: PersonWhere) {
     id
     country
     interests {
-        name
+      name
     }
     graduatedCoursesConnection {
       edges {
         year
         node {
           name
+        }
+      }
+    }
+    postsConnection {
+      edges {
+        date
+        node {
+          content
+          creator {
+            name
+          }
         }
       }
     }

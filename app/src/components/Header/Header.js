@@ -26,7 +26,7 @@ function Header() {
           <HeaderOption Icon={AccountBoxIcon} title="Profile" />
         </Link>
         <Link to='/interest' style={{ textDecoration: 'none' }}>
-          <HeaderOption Icon={TimelineIcon} title="DisplayInterestsList" />
+          <HeaderOption Icon={TimelineIcon} title="Interests" />
         </Link>
         <HeaderOption Icon={ChatIcon} title="Messaging" />
         {!isAuthenticated && (

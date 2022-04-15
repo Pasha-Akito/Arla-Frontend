@@ -61,10 +61,6 @@ const ProfileMyDetail = ({ profile }) => {
                     <span style={{ fontSize: '14px', }}>Friends</span>
                   </div>
                   <div style={{ textAlign: 'center', marginRight: '16px', padding: '14px' }}>
-                    <span style={{ fontSize: '18px', fontWeight: 'bold', display: 'block' }}>10</span>
-                    <span style={{ fontSize: '14px', }}>Photos</span>
-                  </div>
-                  <div style={{ textAlign: 'center', marginRight: '16px', padding: '14px' }}>
                     <span style={{ fontSize: '18px', fontWeight: 'bold', display: 'block' }}>89</span>
                     <span style={{ fontSize: '14px', }}>Comments</span>
                   </div>
@@ -108,7 +104,7 @@ const ProfileMyDetail = ({ profile }) => {
                 justifyContent: 'center'
               }}>
                 <Grid item lg={9}>
-                  <div style={{ paddingBottom: '48px' }}>
+                  <div style={{ paddingBottom: '48px', textAlign: 'center' }}>
                     <p>
                       {profile.bio || 'bio'}
                     </p>
