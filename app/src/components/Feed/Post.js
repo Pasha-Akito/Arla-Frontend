@@ -1,7 +1,6 @@
 import { Avatar } from '@material-ui/core';
 import React from 'react';
 import './Post.css';
-import InputOption from './InputOption';
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ChatOutlinedIcon from "@material-ui/icons/ChatOutlined";
 import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
@@ -23,10 +22,7 @@ function Post({ name, description, message, photoUrl }) {
             </div>
 
             <div className='post__buttons'>
-                <InputOption Icon={ThumbUpIcon} title="Like" colour="black" />
-                <InputOption Icon={ChatOutlinedIcon} title="Comment" colour="black" />
-                <InputOption Icon={ShareOutlinedIcon} title="Share" colour="black" />
-                <InputOption Icon={SendOutlinedIcon} title="Send" colour="black" />
+
             </div>
         </div>
     );

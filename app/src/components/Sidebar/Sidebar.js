@@ -2,9 +2,9 @@ import React from 'react';
 import './Sidebar.css';
 import { Avatar } from "@material-ui/core";
 import { useAuth0 } from '@auth0/auth0-react';
+import { Link } from 'react-router-dom';
 
-
-function Sidebar() {
+const Sidebar = ({ profile }) => {
 
   const recentItem = (topic) => (
     <div className="sidebar__recentItem">
@@ -13,9 +13,8 @@ function Sidebar() {
     </div>
   )
 
-  const { user, isAuthenticated } = useAuth0();
-
   return (
+
     <div className='sidebar'>
 
       <div className='sidebar__top'>
@@ -23,37 +22,28 @@ function Sidebar() {
           src="/gmitlogo.jpg"
           alt='gmit logo'
         />
-        {isAuthenticated ? <Avatar className="sidebar__avatar" src={user.picture} /> : <Avatar className="sidebar__avatar" />}
-        {isAuthenticated ? <h2>{user.name}</h2> : <h2>Your Name</h2>}
-        {isAuthenticated ? <h4>{user.email}</h4> : <h4>Example@Email.com</h4>}
+        <Avatar className="sidebar__avatar" src={profile.image} />
+        <h2>{profile.name}</h2>
+        {profile.graduatedCoursesConnection.edges.map((course) => (
+          <h4> {course.node.name} {course.year} </h4>
+        ))}
       </div>
 
-      <div className='sidebar__stats'>
-
-        <div className="sidebar__stat">
-          <p>Who viewed your profile</p>
-          <p className="sidebar__statNumber">300</p>
-        </div>
-
-        <div className="sidebar__stat">
-          <p>Views of your posts</p>
-          <p className="sidebar__statNumber">5999</p>
-        </div>
-
-      </div>
 
       <div className='sidebar__bottom'>
-        <p>Recent</p>
-        {recentItem('Business')}
-        {recentItem('Basketball')}
-        {recentItem('Chess')}
-        {recentItem('Software Development')}
         <h4>Followed Interests</h4>
-        {recentItem('Chess')}
-        {recentItem('Football')}
+        {profile.interests.map((interests) => (
+          <div>
+            <i />
+            <Link to={`/interest/${interests.name}`} style={{ textDecoration: 'none' }}>
+              {recentItem(interests.name || 'Interests?')}
+            </Link>
+          </div>
+        ))}
       </div>
 
     </div>
+
   )
 }
 

@@ -12,6 +12,7 @@ import ProfileMyPage from './pages/ProfileMyPage';
 import { useQuery, gql } from '@apollo/client';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Box from '@material-ui/core/Box';
+import SignInPage from './pages/SignInPage';
 
 export const GET_COUNT_FROM_TOKENID = gql`
 query UserCount($tokenId: String!) {
@@ -21,12 +22,17 @@ query UserCount($tokenId: String!) {
 
 const App = () => {
 
-  const { user } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
 
   const { data, loading, error } = useQuery(GET_COUNT_FROM_TOKENID, {
     variables: { tokenId: user.sub },
     fetchPolicy: "network-only"
   });
+
+  if(!isAuthenticated)
+  return (
+    <Navigate to='/' replace element={<SignInPage />}/>
+  )
 
   if (loading) return <Box sx={{ display: 'center' }}>
     <CircularProgress />
@@ -35,6 +41,8 @@ const App = () => {
   if (error) return (
     <text>Error! ${error.message}</text>
   );
+
+
 
   return (
     <div>
