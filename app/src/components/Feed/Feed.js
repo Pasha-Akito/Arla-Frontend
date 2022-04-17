@@ -61,6 +61,7 @@ const Feed = ({ profile }) => {
                         connectAndCreatePost();
                     }}>
                         <input type='text' placeholder='Start a post'
+                            required
                             value={postContent}
                             onChange={(e) => setPostContent(e.target.value)} />
 

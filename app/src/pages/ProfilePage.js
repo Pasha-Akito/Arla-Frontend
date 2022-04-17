@@ -6,14 +6,23 @@ import ProfileDetail from '../components/Details/ProfileDetail';
 import { useParams } from "react-router-dom";
 
 const GET_PROFILE_FROM_ID = gql`
-query GetProfileFromProfileId($where: UserWhere) {
-  users(where: $where) {
-    profile {
+query GetProfileFromProfileId($where: PersonWhere) {
+  people(where: $where) {
+    name
+    bio
+    image
+    country
+    id
+    graduatedCoursesConnection {
+      edges {
+        year
+        node {
+          name
+        }
+      }
+    }
+    interests {
       name
-      bio
-      image
-      id
-      country
     }
   }
 }
@@ -24,9 +33,7 @@ const ProfilePage = () => {
     const { loading, error, data } = useQuery(GET_PROFILE_FROM_ID, {
         variables: {
             where: {
-                profile: {
-                    id: params.profileId
-                }
+                id: params.profileId
             }
         },
     });
@@ -34,7 +41,7 @@ const ProfilePage = () => {
     return (
         <Layout>
             <QueryResult error={error} loading={loading} data={data}>
-                {data?.users?.profile?.map((profile) => (
+                {data?.people?.map((profile) => (
                     <ProfileDetail key={profile.id} profile={profile} />
                 ))}
             </QueryResult>

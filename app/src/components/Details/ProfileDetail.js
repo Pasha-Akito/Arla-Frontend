@@ -86,7 +86,7 @@ const ProfileDetail = ({ profile }) => {
                 {profile.graduatedCoursesConnection.edges.map((course) => (
                 <div>
                   <i />
-                   Graduated {course.node.name || 'Course?'} in {course.year}
+                   Graduated {course.node.name || 'Course?'} in {course.year || 1999}
                 </div>
               ))}
               </div>

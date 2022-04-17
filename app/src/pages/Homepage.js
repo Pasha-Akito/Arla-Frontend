@@ -21,7 +21,8 @@ function Homepage() {
         user: {
           tokenId: user.sub
         }
-      }
+      },
+      first: 8
     },
   });
 

@@ -6,7 +6,7 @@ import ProfileMyDetail from '../components/Details/ProfileMyDetail';
 import { useAuth0 } from '@auth0/auth0-react'
 
 export const GET_PROFILE_FROM_TOKENID = gql`
-query GetProfileFromUserId($where: PersonWhere) {
+query GetProfileFromUserId($where: PersonWhere, $first: Int) {
   people(where: $where) {
     name
     bio
@@ -24,13 +24,15 @@ query GetProfileFromUserId($where: PersonWhere) {
         }
       }
     }
-    postsConnection {
+    postsConnection(first: $first) {
       edges {
         date
         node {
           content
           creator {
             name
+            image
+            id
           }
         }
       }
@@ -49,7 +51,8 @@ const ProfileMyPage = () => {
         user: {
           tokenId: user.sub
         }
-      }
+      },
+      first: 8
     },
   });
 

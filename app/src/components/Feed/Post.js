@@ -1,13 +1,16 @@
 import { Avatar } from '@material-ui/core';
 import React from 'react';
 import './Post.css';
+import { Link } from 'react-router-dom'
 
 const Post = ({ post }) => {
 
     return (
         <div className='post'>
             <div className='post__header'>
-                <Avatar />
+                <Link to={`/profile/${post.node.creator.id}`} style={{ textDecoration: 'none' }}>
+                    <Avatar src={post.node.creator.image} />
+                </Link>
                 <div className='post__info'>
                     <h2>{post.node.creator.name}</h2>
                     <p>{post.date}</p>

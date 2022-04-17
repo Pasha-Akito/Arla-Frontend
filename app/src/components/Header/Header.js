@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react'
 import LogoutIcon from '@mui/icons-material/Logout';
 import LoginIcon from '@mui/icons-material/Login';
+import SchoolIcon from '@mui/icons-material/School';
 
 
 function Header() {
@@ -24,6 +25,9 @@ function Header() {
         </Link>
         <Link to='/profile/my' style={{ textDecoration: 'none' }}>
           <HeaderOption Icon={AccountBoxIcon} title="Profile" />
+        </Link>
+        <Link to='/course/my' style={{ textDecoration: 'none' }}>
+          <HeaderOption Icon={SchoolIcon} title="My Course" />
         </Link>
         <Link to='/interest' style={{ textDecoration: 'none' }}>
           <HeaderOption Icon={TimelineIcon} title="Interests" />
