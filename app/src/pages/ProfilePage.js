@@ -5,7 +5,7 @@ import QueryResult from '../containers/QueryResult';
 import ProfileDetail from '../components/Details/ProfileDetail';
 import { useParams } from "react-router-dom";
 
-const GET_PROFILE_FROM_ID = gql`
+export const GET_PROFILE_FROM_ID = gql`
 query GetProfileFromProfileId($where: PersonWhere) {
   people(where: $where) {
     name
@@ -24,29 +24,37 @@ query GetProfileFromProfileId($where: PersonWhere) {
     interests {
       name
     }
+    postsAggregate {
+      count
+    }
+    user {
+      friendsAggregate {
+        count
+      }
+    }
   }
 }
 `;
 
 const ProfilePage = () => {
-    const params = useParams();
-    const { loading, error, data } = useQuery(GET_PROFILE_FROM_ID, {
-        variables: {
-            where: {
-                id: params.profileId
-            }
-        },
-    });
+  const params = useParams();
+  const { loading, error, data } = useQuery(GET_PROFILE_FROM_ID, {
+    variables: {
+      where: {
+        id: params.profileId
+      }
+    },
+  });
 
-    return (
-        <Layout>
-            <QueryResult error={error} loading={loading} data={data}>
-                {data?.people?.map((profile) => (
-                    <ProfileDetail key={profile.id} profile={profile} />
-                ))}
-            </QueryResult>
-        </Layout>
-    )
+  return (
+    <Layout>
+      <QueryResult error={error} loading={loading} data={data}>
+        {data?.people?.map((profile) => (
+          <ProfileDetail key={profile.id} profile={profile} />
+        ))}
+      </QueryResult>
+    </Layout>
+  )
 }
 
 export default ProfilePage

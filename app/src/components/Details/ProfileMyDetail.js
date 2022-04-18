@@ -57,12 +57,16 @@ const ProfileMyDetail = ({ profile }) => {
                 <div style={{ padding: '16px', display: 'flex', justifyContent: 'center' }}>
 
                   <div style={{ textAlign: 'center', marginRight: '16px', padding: '14px' }}>
-                    <span style={{ fontSize: '18px', fontWeight: 'bold', display: 'block' }}>22</span>
-                    <span style={{ fontSize: '14px', }}>Friends</span>
+                    <span style={{ fontSize: '18px', fontWeight: 'bold', display: 'block' }}>
+                      {profile.postsAggregate.count}
+                      </span>
+                    <span style={{ fontSize: '14px', }}>Posts</span>
                   </div>
                   <div style={{ textAlign: 'center', marginRight: '16px', padding: '14px' }}>
-                    <span style={{ fontSize: '18px', fontWeight: 'bold', display: 'block' }}>89</span>
-                    <span style={{ fontSize: '14px', }}>Comments</span>
+                    <span style={{ fontSize: '18px', fontWeight: 'bold', display: 'block' }}>
+                      {profile.user.friendsAggregate.count}
+                      </span>
+                    <span style={{ fontSize: '14px', }}>Friends</span>
                   </div>
                 </div>
               </Grid>

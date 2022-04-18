@@ -37,6 +37,14 @@ query GetProfileFromUserId($where: PersonWhere, $first: Int) {
         }
       }
     }
+    postsAggregate {
+      count
+    }
+    user {
+      friendsAggregate {
+        count
+      }
+    }
   }
 }
 `;
