@@ -16,6 +16,11 @@ query CourseFromTokenId($where: CourseWhere) {
       bio
       image
       id
+      graduatedCoursesConnection {
+        edges {
+          year
+        }
+      }
     }
     peopleGraduatedAggregate {
       count
