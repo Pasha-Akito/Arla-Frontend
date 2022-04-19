@@ -7,6 +7,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useQuery, gql } from '@apollo/client';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Box from '@material-ui/core/Box';
+import ProfileCard from '../../containers/ProfileCard';
 
 export const USER_INTEREST_COUNT = gql`
 query UserInterestCount($tokenId: String!, $name: String!) {
@@ -19,7 +20,7 @@ const InterestDetail = ({ interest }) => {
     const { user } = useAuth0();
 
     const { data, loading, error } = useQuery(USER_INTEREST_COUNT, {
-        variables: { 
+        variables: {
             tokenId: user.sub,
             name: interest.name
         },
@@ -42,16 +43,24 @@ const InterestDetail = ({ interest }) => {
                 <DetailRow>
                     <h1>{interest.name || 'name'}</h1>
 
-                {data.userInterestCount > 0 
-                ? 
-                <DisconnectInterestButton interestButton={interest.name} />
-                :
-                <ConnectInterestButton interestButton={interest.name} />
-                }
+                    {data.userInterestCount > 0
+                        ?
+                        <DisconnectInterestButton interestButton={interest.name} />
+                        :
+                        <ConnectInterestButton interestButton={interest.name} />
+                    }
 
                 </DetailRow>
                 <DetailRow>
                     <h4>{interest.bio || 'bio'}</h4>
+                </DetailRow>
+                <DetailRow>
+                    <h4>Amount of people interested: {interest.peopleInterestedAggregate.count || '20'}</h4>
+                </DetailRow>
+                <DetailRow>
+                    {interest.peopleInterested.map((profile) => (
+                        <ProfileCard key ={profile.id} profile={profile}/>
+                    ))}
                 </DetailRow>
             </InterestDetails>
         </ContentSection>

@@ -1,7 +1,6 @@
 import React from 'react';
 import './Header.css';
 import HeaderOption from './HeaderOption';
-import SearchIcon from "@material-ui/icons/Search";
 import HomeIcon from "@material-ui/icons/Home";
 import TimelineIcon from '@material-ui/icons/Timeline';
 import ChatIcon from "@material-ui/icons/Chat";
@@ -12,8 +11,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import LoginIcon from '@mui/icons-material/Login';
 import SchoolIcon from '@mui/icons-material/School';
 
-
-function Header() {
+const Header = () => {
 
   const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
 

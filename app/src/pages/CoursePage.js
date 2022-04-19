@@ -2,34 +2,39 @@ import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import Layout from '../containers/Layout';
 import QueryResult from '../containers/QueryResult';
-import InterestDetail from '../components/Details/InterestDetail';
+import CourseDetail from '../components/Details/CourseDetail';
 import { useParams } from "react-router-dom";
 
-export const INTEREST_QUERY = gql`
-query GetInterestByName($where: InterestWhere) {
-  interests(where: $where) {
+export const COURSE_QUERY = gql`
+query GetCourseByName($where: CourseWhere) {
+  courses(where: $where) {
     name
     bio
     id
-    peopleInterested {
+    peopleGraduated {
       name
       bio
       image
       id
+      graduatedCoursesConnection {
+        edges {
+          year
+        }
+      }
     }
-    peopleInterestedAggregate {
+    peopleGraduatedAggregate {
       count
     }
   }
 }
 `;
 
-const InterestPage = () => {
+const CoursePage = () => {
     const params = useParams();
-    const { loading, error, data } = useQuery(INTEREST_QUERY, {
+    const { loading, error, data } = useQuery(COURSE_QUERY, {
         variables: {
             where: {
-                name: params.interestName
+                name: params.courseName
             }
         },
         fetchPolicy: "network-only"
@@ -38,12 +43,12 @@ const InterestPage = () => {
     return (
         <Layout>
             <QueryResult error={error} loading={loading} data={data}>
-                {data?.interests?.map((interest) => (
-                    <InterestDetail key={interest.name} interest={interest} />
+                {data?.courses?.map((course) => (
+                    <CourseDetail key={course.name} course={course} />
                 ))}
             </QueryResult>
         </Layout>
     )
 }
 
-export default InterestPage
+export default CoursePage

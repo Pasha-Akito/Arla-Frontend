@@ -13,6 +13,7 @@ import { useQuery, gql } from '@apollo/client';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Box from '@material-ui/core/Box';
 import SignInPage from './pages/SignInPage';
+import CoursePage from './pages/CoursePage';
 
 export const GET_COUNT_FROM_TOKENID = gql`
 query UserCount($tokenId: String!) {
@@ -59,6 +60,7 @@ const App = () => {
           />
           <Route path="/interest" element={<InterestsListPage />} />
           <Route path='/interest/:interestName' element={<InterestPage />} />
+          <Route path='/course/:courseName' element={<CoursePage />} />
           <Route path="/profile/my" element={<ProfileMyPage />} />
           <Route path="/profile/my/register" element={<ProfileRegisterPage />} />
           <Route path="/profile/my/edit" element={<ProfileEditPage />} />
