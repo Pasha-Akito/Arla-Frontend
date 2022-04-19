@@ -60,7 +60,7 @@ const App = () => {
           />
           <Route path="/interest" element={<InterestsListPage />} />
           <Route path='/interest/:interestName' element={<InterestPage />} />
-          <Route path='/course/:courseName' element={<CoursePage />} />
+          <Route path='/course/my' element={<CoursePage />} />
           <Route path="/profile/my" element={<ProfileMyPage />} />
           <Route path="/profile/my/register" element={<ProfileRegisterPage />} />
           <Route path="/profile/my/edit" element={<ProfileEditPage />} />

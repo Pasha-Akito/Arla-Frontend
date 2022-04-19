@@ -7,7 +7,7 @@ const CourseDetail = ({ course }) => {
 
     return (
         <ContentSection>
-            <img style={{ objectFit: 'cover', maxHeight: '400px', borderRadius: '4px', marginBottom: '30px' }} src="/gmitlogo.jpg" />
+            <img style={{ objectFit: 'cover', maxHeight: '400px', borderRadius: '4px', marginBottom: '30px' }} src="/gmitlogo.jpg" alt='' />
             <CourseDetails>
                 <DetailRow>
                     <h1>{course.name || 'name'}</h1>
