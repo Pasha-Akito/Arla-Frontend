@@ -1,10 +1,9 @@
-
 import React from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import { mq } from '../styles';
 
-const ProfileCard = ({ profile }) => {
+const ProfileCourseCard = ({ profile }) => {
 
     return (
 
@@ -12,15 +11,17 @@ const ProfileCard = ({ profile }) => {
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', height: '100%' }}>
 
                 <div style={{ height: '160px', position: 'relative' }}>
-                    <img style={{ objectFit: 'cover', width: '100%', height: '100%', filter: 'greyscale(60%)' }} src={profile.image}/>
+                    <img style={{ objectFit: 'cover', width: '100%', height: '100%', filter: 'greyscale(60%)' }} src={profile.image} />
                 </div>
 
                 <div style={{ padding: '18px', flex: '1', display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
                     <h3 style={{ textAlign: 'center', fontSize: '18px', lineHeight: '16px', fontWeight: '700', color: 'black', flex: '1' }}>
                         {profile.name || 'name'}
                     </h3>
-
-                    <div style={{ display: 'flex', flexDirection: 'row'}}>
+                    {profile.graduatedCoursesConnection.edges.map((course) => (
+                        <h3> Graduated in {course.year || 1999}</h3>
+                    ))}
+                    <div style={{ display: 'flex', flexDirection: 'row' }}>
                         <div style={{ lineHeight: '16px', fontSize: '14px' }}>
                             {profile.bio || 'bio'}
                         </div>
@@ -29,12 +30,10 @@ const ProfileCard = ({ profile }) => {
             </div>
         </CardContainer>
 
-
-
     )
 }
 
-export default ProfileCard
+export default ProfileCourseCard
 
 const CardContainer = styled(Link)({
     borderRadius: 6,
@@ -64,4 +63,4 @@ const CardContainer = styled(Link)({
     },
     cursor: 'pointer',
     textDecoration: 'none',
-}); 
+});

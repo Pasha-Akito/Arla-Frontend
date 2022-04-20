@@ -78,8 +78,6 @@ const Feed = ({ profile }) => {
             {profile.postsConnection?.edges.map((post) => (
                 <Post key={post.date} post={post} />
             ))}
-
-
         </div>
     )
 }

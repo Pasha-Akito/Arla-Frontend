@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled';
 import { widths } from '../../styles';
-import ProfileCard from '../../containers/ProfileCard';
+import ProfileCard from '../../containers/ProfileCourseCard';
 
 const CourseDetail = ({ course }) => {
 
