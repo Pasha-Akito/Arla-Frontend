@@ -22,7 +22,8 @@ function Homepage() {
           tokenId: user.sub
         }
       },
-      first: 8
+      first: 8,
+      postsConnectionFirst2: 5
     },
   });
 
